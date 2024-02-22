@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Category Detail</title>
+    <link href="/static/css/index/main.css" rel="stylesheet">
+    <link href="/static/css/category/detail.css" rel="stylesheet">
+</head>
+<body>
+{{template "header.html" .}}
+    <div class="action-wrapper">
+        <input type="hidden" value="{{.category.CategoryId}}" id="current_category_id">
+        <div class="action">
+            <a class="action" href="/">
+                <img src="/static/images/turn-back.png" alt="edit"> Back
+            </a>
+        </div>
+        <div class="action">
+            <a class="action" href="/category/edit/{{.category.CategoryId}}">
+                <img src="/static/images/edit-icon.png" alt="edit"> Edit <b>{{.category.Name}}</b>
+            </a>
+        </div>
+        <br>
+        <div class="action">
+            <a class="action" href="/wiki/add/{{.category.CategoryId}}">
+                <img src="/static/images/edit-icon.png" alt="edit"> Add new post
+            </a>
+        </div>
+        <div class="action hidden">
+            <a class="action" href="#" id="delete-category">
+                <img src="/static/images/delete.png" alt="edit"> Delete this category
+            </a>
+        </div>
+    </div>
+    <div class="break-crumb">
+        <a href="/">Home</a> > <a href="#">{{.category.Name}}</a>
+    </div>
+    <div class="short-description" id="short-description">{{.category.ShortDescription}}</div>
+    <main id="list-wiki">
+        <div class="loader"></div>
+    </main>
+    {{template "footer.html"}}
+    <script src="/static/js/category/detail.js"></script>
+</body>
+</html>

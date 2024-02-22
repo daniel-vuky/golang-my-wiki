@@ -1,0 +1,22 @@
+main h1:before {
+    content: "#";
+    color: #4CAF50;
+}
+
+.main-content {
+    border: 1px solid #eee;
+    box-shadow: 0 0 0.5em #999;
+    border-radius: 2px;
+    padding: 1.5em 2em 2em;
+    margin-bottom: 0.5em;
+}
+
+.action-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.action-wrapper .action {
+    margin-right: 5px;
+    margin-left: 5px;
+}

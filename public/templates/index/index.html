@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Wiki</title>
+    <link href="/static/css/index/main.css" rel="stylesheet">
+</head>
+<body>
+    {{template "header.html" .}}
+    <div class="action-wrapper">
+        <div class="action">
+            <img src="/static/images/edit-icon.png" alt="edit">
+            <a class="action" href="/category/add">Add Category</a>
+        </div>
+    </div>
+    <main id="list-category">
+        <div class="loader"></div>
+    </main>
+    {{template "footer.html"}}
+    <script src="/static/js/index/index.js"></script>
+</body>
+</html>

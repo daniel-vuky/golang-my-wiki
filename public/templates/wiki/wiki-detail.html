@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Wiki Detail</title>
+    <link href="/static/css/index/main.css" rel="stylesheet">
+    <link href="/static/css/wiki/detail.css" rel="stylesheet">
+</head>
+<body>
+{{template "header.html" .}}
+<div class="action-wrapper">
+    <input type="hidden" value="{{.wiki.WikiId}}" id="current_wiki_id">
+    <input type="hidden" value="{{.wiki.CategoryId}}" id="current_category_id">
+    <div class="action">
+        <a class="action" href="/category/view/{{.wiki.CategoryId}}">
+            <img src="/static/images/turn-back.png" alt="edit"> Back
+        </a>
+    </div>
+    <div class="action">
+        <a class="action" href="/wiki/edit/{{.wiki.WikiId}}">
+            <img src="/static/images/edit-icon.png" alt="edit"> Edit <b>{{.wiki.Title}}</b>
+        </a>
+    </div>
+    <br>
+    <div class="action">
+        <a class="action" href="#" id="delete-wiki">
+            <img src="/static/images/delete.png" alt="edit"> Delete this post
+        </a>
+    </div>
+</div>
+<br>
+<main id="wiki-detail" class="main-content">
+    <div class="wiki-title">
+        <h3>{{.wiki.Title}}</h3>
+    </div>
+    <div class="body hidden" id="wiki-body">
+        {{.wiki.Body}}
+    </div>
+</main>
+{{template "footer.html"}}
+<script src="/static/js/wiki/detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Category</title>
+    <link href="/static/css/index/main.css" rel="stylesheet">
+    <link href="/static/css/wiki/form.css" rel="stylesheet">
+</head>
+<body>
+{{template "header.html" .}}
+<div class="action-wrapper">
+    <div class="action">
+        <a class="action" onclick="history.back()">
+            <img src="/static/images/turn-back.png" alt="edit"> Back
+        </a>
+    </div>
+</div>
+<div class="form-wrapper">
+    <form id="wiki-form">
+        {{ if .wiki }}
+        <input type="hidden" name="id" value="{{.wiki.WikiId}}">
+        <input type="hidden" name="category_id" value="{{.wiki.CategoryId}}">
+        {{ else }}
+        <input type="hidden" name="category_id" value="{{.category_id}}">
+        {{ end }}
+        <div class="field">
+            <label for="title">Title</label>
+            <input type="text"
+                   name="title"
+                   id="title"
+                   class="field"
+                   placeholder="Wiki Title"
+                   value="{{.wiki.Title}}"
+                   required>
+        </div>
+        <div class="field">
+            <label for="body">Content</label>
+            <textarea name="body"
+                      id="body"
+                      cols="30"
+                      rows="10">
+                    {{.wiki.Body}}
+                </textarea>
+        </div>
+        <div class="action-wrapper" id="action-buttons">
+            <button class="button" id="submit-btn">Submit</button>
+        </div>
+    </form>
+</div>
+{{template "footer.html"}}
+<script src="/static/js/wiki/form.js"></script>
+<script src="/static/js/base/loader.js"></script>
+<script src="/static/js/tinymce/tinymce.min.js"></script>
+<script>
+    tinymce.init({
+        selector: 'textarea',
+        plugins: 'autolink lists link charmap print preview hr anchor pagebreak codesample',
+        toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | codesample',
+        setup: function (editor) {
+            editor.on('change', function () {
+                editor.save();
+            });
+        }
+    });
+</script>
+</body>
+</html>

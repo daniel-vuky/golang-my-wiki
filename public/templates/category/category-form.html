@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Category</title>
+    <link href="/static/css/index/main.css" rel="stylesheet">
+    <link href="/static/css/category/category-form.css" rel="stylesheet">
+</head>
+<body>
+    {{template "header.html" .}}
+    <div class="action-wrapper">
+        <div class="action">
+            <a class="action" href="/">
+                <img src="/static/images/turn-back.png" alt="edit"> Back
+            </a>
+        </div>
+    </div>
+    <div class="form-wrapper">
+        <form id="category-form">
+            {{ if .category }}
+            <input type="hidden" name="id" value="{{.category.CategoryId}}">
+            {{ end }}
+            <div class="field">
+                <label for="name">Category</label>
+                <input type="text"
+                       name="name"
+                       id="name"
+                       class="field"
+                       placeholder="Category Name"
+                       value="{{.category.Name}}"
+                       required>
+            </div>
+            <div class="field">
+                <label for="short_description">Short Description</label>
+                <textarea name="short_description"
+                          id="short_description"
+                          cols="30"
+                          rows="10">
+                    {{.category.ShortDescription}}
+                </textarea>
+            </div>
+            <div class="action-wrapper" id="action-buttons">
+                <button class="button" id="submit-btn">Submit</button>
+            </div>
+        </form>
+    </div>
+    {{template "footer.html"}}
+    <script src="/static/js/category/form.js"></script>
+    <script src="/static/js/base/loader.js"></script>
+    <script src="/static/js/tinymce/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            plugins: 'autolink lists link charmap print preview hr anchor pagebreak codesample',
+            toolbar: 'undo redo | styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link | codesample',
+            setup: function (editor) {
+                editor.on('change', function () {
+                    editor.save();
+                });
+            }
+        });
+    </script>
+</body>
+</html>

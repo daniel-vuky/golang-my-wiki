@@ -1,0 +1,14 @@
+main h1:before {
+    content: "#";
+    color: #4CAF50;
+}
+
+.action-wrapper {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.action-wrapper .action {
+    margin-right: 5px;
+    margin-left: 5px;
+}
