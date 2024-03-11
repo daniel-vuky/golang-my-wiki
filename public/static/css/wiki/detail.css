@@ -20,3 +20,7 @@ main h1:before {
     margin-right: 5px;
     margin-left: 5px;
 }
+
+code {
+    display: block;
+}
